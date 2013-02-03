@@ -1,0 +1,230 @@
+<html>
+<head>
+<link rel='stylesheet' type='text/css' href='css/ui-lightness/jquery-ui-1.10.0.custom.css' />
+    <script type="text/javascript"> </script>
+    <script src="/nowjs/now.js"></script>
+    <script src="index.js"></script>
+    <script src="jquery-1.9.0.js"></script>
+    <script src='jquery.cookie.js'></script>
+    <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
+     <script src="//connect.facebook.net/en_US/all.js"></script>
+ <link rel="stylesheet" type="text/css" href="css/landing.css">
+      <script src="js/modernizr.custom.37797.js"></script> 
+<!-- 
+    <script src="js/parallax.js"></script>
+ -->
+    <script type="text/javascript">
+        function playSound() {
+            var snd = new Audio("005.wav"); // buffers automatically when created
+            snd.play();
+        }
+
+        $(document).ready(function() {
+
+
+          $('.circle').hover(function(){
+            var elem = $(this).find('p');
+            $.data(this, 'timer', setTimeout(function() { elem.fadeIn(); },150));
+            }, function(){
+                  clearTimeout($(this).data('timer'));
+                  $(this).find('p').stop().fadeOut(100);
+            });
+        });
+    </script>  
+    <style type="text/css">
+        body{
+          
+            background: url(images/classylvg.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+
+        }
+        
+        #content{
+           z-index:10;
+          width:100%;
+          height:100%;
+          display:-webkit-box;
+          -webkit-box-orient:horizontal;
+          -webkit-box-pack:center;
+          -webkit-box-align:center;
+        }
+        .opts{
+          z-index:10;
+          background: rgb(208, 242, 255);
+
+          padding:20px;
+          margin:20px;
+          border-radius:10px;
+
+        }
+        .opts:hover{
+          background: yellow;
+
+        }
+
+        /* midground (clouds) */
+#parallax-bg2 {
+  z-index: 2;
+  position: fixed;
+  left: 50%; /* align left edge with center of viewport */
+  top: 0;
+  width: 1200px;
+  margin-left: -600px; /* move left by half element's width */
+  opacity:0.2;
+  }
+  #bg2-1 {
+    position: absolute;
+    top: 162px;
+    left: 200px;
+    }
+  #bg2-2 {
+    position: absolute;
+    top: 300px;
+    left: 1150px;
+    }
+  #bg2-3 {
+    position: absolute;
+    top: 543px;
+    left: -35px;
+    }
+  #bg2-4 {
+    position: absolute;
+    top: 1180px;
+    left: 250px;
+    }
+  #bg2-5 {
+    position: absolute;
+    top: 900px;
+    left: 890px;
+    }
+/* background (clouds) */
+#parallax-bg1 {
+  z-index: 1;
+  position: fixed;
+  left: 50%; /* align left edge with center of viewport */
+  top: 0;
+  width: 1200px;
+  margin-left: -600px; /* move left by half element's width */
+  opacity:.2;
+  }
+  #bg1-1 {
+    position: absolute;
+    top: 85px;
+    left: -270px;
+    }
+  #bg1-2 {
+    position: absolute;
+    top: 440px;
+    left: 795px;
+    }
+  #bg1-3 {
+    position: absolute;
+    top: 900px;
+    left: -220px;
+    }
+
+  #bg1-4 {
+    position: absolute;
+    top: 900px;
+    left: 300px;
+    }
+
+    </style>  
+      
+</head>
+
+<body>
+  <div id="fb-root"></div>
+
+<script>
+  FB.init({
+      appId      : {{= app_id }}, // App ID from the App Dashboard
+      channelUrl : 'http://pillowpal.csail.mit.edu:5678/channel.html', // Channel File for x-domain communication
+      status     : true, // check the login status upon init?
+      cookie     : true, // set sessions cookies to allow your server to access the session?
+      xfbml      : true  // parse XFBML tags on this page?
+    });
+  FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       myid = response.id
+       console.log('Good to see you, ' + response.name + '.');
+     });
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ });
+</script>
+  
+<!--   <div id="container">
+  <div id="content">
+    <div class="opts">
+      <a href="invitetopillow">Invite your friends to your pillow</a>
+    </div>
+    <div class="opts">
+      <a href="accesspillow">Access your friends' pillows</a>
+    </div>
+  </div>
+ -->
+  
+
+      <article id="blur">
+    
+      <div class="container">
+        <h2>Pillow Pals</h2>
+        <a href="invitetopillow"> 
+          <div class="row" style="width:800px; margin: 0 auto;">
+            <div class="span4">
+              <div class="circle">
+                <div class="classes"></div>
+                <h3>Invite<br/> <br/>Friends</h3>
+                <p>Give your most trusted access to your pillow. The days of lateness are over.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="accesspillow"> 
+            <div class="span4">
+              <div class="circle">
+                <div class="consultations"></div>
+                <h3>Access <br/> <br/>Pillows</h3>
+                <p>Acccess your friends' pillows. Like a good friend, wake them up when they need it most.</p>
+              </div>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+    </article>
+
+ 
+<audio></audio>
+
+<!--
+<br/><br/>
+
+<label for="location" style="color: #544937">Friend to wake up</label> <input type="text" name="friendlist" class="text ui-widget-content ui-corner-all" id="friendlist"></input>
+
+<br/><br/>
+
+Status: <span id="status"></span>
+
+<br/><br/>
+
+Wake up in <input id="numMinutes" type="text"></input> minutes <button click="wakeupclicked">Set Alarm</button>
+
+
+<div id="container">
+    <button onclick="playSound()"> Play </button>
+</div>
+-->
+
+</html>
+
+
+
+
