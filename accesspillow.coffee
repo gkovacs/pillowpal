@@ -13,6 +13,8 @@ now.ready () ->
     $('#status').text(status)
   root.friendlist = []
   FB.api('/me/friends', (response) ->
+    if not response?
+      window.location = '/auth/facebook'
     for friend in response.data
       console.log friend
       root.friendlist.push friend.name
