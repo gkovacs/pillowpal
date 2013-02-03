@@ -148,10 +148,14 @@ app.get '/allowedfriends', (req, res) ->
   userid = req.query.userid
   res.end JSON.stringify(allowedFriends[userid])
 
+everyone.now.sendPlaySound = (targetuser, volume, soundfile) ->
+  everyone.now.playSound(targetuser, volume, soundfile)
+
 app.get '/playsound', (req, res) ->
   userid = req.query.userid
+  volume = req.query.volume
   soundfile = req.query.soundfile
-  everyone.now.playSound(userid, soundfile)
+  everyone.now.playSound(userid, volume, soundfile)
   res.end 'send sound'
 
 #app.get '/', (req, res) ->
