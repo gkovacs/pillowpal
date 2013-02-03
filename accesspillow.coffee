@@ -12,13 +12,16 @@ now.ready () ->
       $('#status').text(status)
     )
     root.friendlist = []
+    root.idToFriend = {}
     FB.api('/me/friends', (response) ->
       if not response? or not response.data?
         window.location = '/auth/facebook'
       for friend in response.data
         console.log friend
+        root.idToFriend[friend.id] = friend.name
         root.friendlist.push {'label': friend.name, 'value': friend.id}
       root.friendlist.push {'label': 'Myself', 'value': myid}
+      root.idToFriend[myid] = 'Myself'
       $('#friendlist').autocomplete(
         {
           'autoFocus': true,
@@ -56,7 +59,7 @@ accessPillow = root.accessPillow = (friendid) ->
     friendid = $('#friendlist').val()
   targetid = friendid
   setTimeout(() ->
-    $('#friendlist').val('')
+    $('#friendlist').val(root.idToFriend[friendid])
   , 10)
   console.log friendid
   now.getFriendsAllowed(friendid, (allowedIds) ->
