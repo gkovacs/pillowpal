@@ -7,14 +7,47 @@
     <script src="jquery-1.9.0.js"></script>
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
-     
+     <link rel="stylesheet" type="text/css" href="css/landing.css">
     <script type="text/javascript">
         function playSound() {
             var snd = new Audio("005.wav"); // buffers automatically when created
             snd.play();
         }
     </script>  
-      
+    
+    <style type="text/css">
+
+    body{
+      background: url(images/classylvg.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: Helvetica;
+    }
+    #container{
+      width:900px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px 2px #888;
+      background:rgba(215, 226, 255, 0.79);
+      padding: 30px;
+    }
+
+  
+    h3{font-family:'Lato',sans-serif !important;color:#000;font-weight:100;font-size:20px !important;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);line-height:25px !important;text-align:center;}
+
+    input {
+      margin-top:0;
+      margin-right:5px;
+      width:300px;
+    }
+    #input-friend{
+        width:250px;
+        margin: 0 auto;
+    }
+
+    
+    </style>
 </head>
 
 <div id="fb-root"></div>
@@ -42,23 +75,36 @@
 
 </script>
 
-Which of your friends' pillow would you like to access?
+<h2 style="padding-top:20px">Pillow Pal</h2>
+  <div id="container">
+    <div id="invite">
+      <h3>Which of your friends' pillow would you like to access?</h3>
+    </div>
+    
+    <div id ="perms">
+        <form action="javascript:void(0)" onsubmit="accessPillow()" id="accesspillowform" dir="ltr" lang="en">
+        <div id="input-friend">
+            <input type="text" placeholder="Search your Facebook friends..." name="friendlist" class="text ui-widget-content ui-corner-all" id="friendlist"></input>
+        </div>
+        <input type="hidden" value="submit" name="sdfnasg" id="sdfnasg"></input>
+        </form>
 
-<br/><br/>
+        <div id="requestAccess" style="display: none">You don't have permission to access this person's pillow. Do something here to request access.</div>
+        <div id="pillowcontrols" style="display: none">
 
-<form action="javascript:void(0)" onsubmit="accessPillow()" id="accesspillowform" dir="ltr" lang="en">
-<label for="friendlist" style="color: #544937">Friend whose pillow to access</label> <input type="text" name="friendlist" class="text ui-widget-content ui-corner-all" id="friendlist"></input>
-<input type="hidden" value="submit" name="sdfnasg" id="sdfnasg"></input>
-</form>
+            Wake up:<br/>
+            Volume: <input id="volumeSlider" min="1" max="100" value="30" type="range"/>
+            <input type="submit" onclick="sendWakeup()"></input>
 
-<div id="requestAccess" style="display: none">You don't have permission to access this person's pillow. Do something here to request access.</div>
-<div id="pillowcontrols" style="display: none">
+        </div>
+    </div>
 
-Wake up:<br/>
-Volume: <input id="volumeSlider" min="1" max="100" value="30" type="range"/>
-<input type="submit" onclick="sendWakeup()"></input>
+  </div>
 
-</div>
+</body>
+
+
+
 
 </html>
 

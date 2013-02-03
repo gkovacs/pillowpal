@@ -14,6 +14,16 @@
             var snd = new Audio("005.wav"); // buffers automatically when created
             snd.play();
         }
+
+        $(document).ready(function(){
+          $('#sbmitbtn').click(function(){
+            $('#wrapper').fadeOut(function(){
+
+              $('#invite-notification').fadeIn()
+            })
+          });
+
+        })
     </script>  
 
     <style type="text/css">
@@ -30,7 +40,9 @@
       width:900px;
       margin: 0 auto;
       box-shadow: 0 0 10px 2px #888;
-      background:rgba(215, 226, 255, 0.79)
+      background:rgba(215, 226, 255, 0.79);
+      padding-bottom:20px;
+      margin-bottom:40px;
     }
 
     #invite{
@@ -46,7 +58,9 @@
 
     }
    
-    h3{font-family:'Lato',sans-serif !important;color:#000;font-weight:100;font-size:20px !important;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);line-height:25px !important;text-align:center;}
+    h3{font-family:'Lato',sans-serif !important;color:#000;font-weight:100;font-size:30px !important;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);line-height:35px !important;text-align:center;}
+
+    #invite-notification h3{font-family:'Lato',sans-serif !important;color:#000;font-weight:100;font-size:40px !important;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);line-height:45px !important;text-align:center;padding:50px;}
 
     input {
       margin-top:0;
@@ -56,6 +70,11 @@
     #sbmitbtn{
       width:160px;
       margin: 0 auto;
+      padding-top:20px;
+    }
+
+    .friend-wrapper{
+      margin-bottom:10px;
     }
     </style>
       
@@ -84,19 +103,25 @@
  });
 </script>
 
-<h2>Pillow Pal</h2>
+<h2 style="padding-top:20px">Pillow Pal</h2>
   <div id="container">
-    <div id="invite">
-      <h3>Invite your friends to your pillow </h3>
-    </div>
-    
-    <!--Welcome <span id="username"></span>-->
-    
+    <div id = 'wrapper'>
+      <div id="invite">
+        <h3>Invite your friends to your pillow </h3>
+      </div>
+      
+      <!--Welcome <span id="username"></span>-->
+      
 
-    <div id="friendinvitelist">
+      <div id="friendinvitelist">
+      </div>
+      <div id="sbmitbtn">
+        <input type="submit" onclick="friendsInvited()" value="Invite friends!"></input>
+      </div>
     </div>
-    <div id="sbmitbtn">
-      <input type="submit" onclick="friendsInvited()" value="Invite friends!"></input>
+
+    <div id="invite-notification" style="display:none;">
+      <h3> Thanks! Your friends will be notified through Facebook!</h3>
     </div>
   </div>
 

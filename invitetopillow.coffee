@@ -29,7 +29,7 @@ now.ready () ->
       for friend in response.data
         console.log friend
         root.friendlist.push friend.name
-        $('#friendinvitelist').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append("<span class='friend-info'>" + friend.name + " </span>").append('<br> <br>')
+        $('#friendinvitelist').append($("<div>").addClass('friend-wrapper').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append("<span class='friend-info'>" + friend.name + " </span>"))
     )
   )
 
