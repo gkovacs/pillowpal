@@ -23,13 +23,13 @@ $(document).ready(function() {
       email = getUrlParameters()['email']
     } else {
       // redirect to login page
-      window.location = '/login.html'
+      window.location = '/auth/facebook'
     }
     if (isdefined(getUrlParameters()['name'])) {
       fullname = getUrlParameters()['name']
     } else {
       // redirect to login page
-      window.location = '/login.html'
+      window.location = '/auth/facebook'
     }
     if (fullname.indexOf('#') != -1) {
       fullname = fullname.split('#')[0]
