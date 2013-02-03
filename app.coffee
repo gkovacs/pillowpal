@@ -112,7 +112,8 @@ app.get('/auth/facebook', passport.authenticate('facebook'), (req, res) ->
 #   login page.  Otherwise, the primary route function function will be called,
 #   which, in this example, will redirect the user to the home page.
 app.get('/auth/facebook/callback', passport.authenticate('facebook', { failureRedirect: '/login.html' }), (req, res) ->
-  res.redirect('/setcookie.html?email=' + encodeURI(req.user.profileUrl) + '&name=' + encodeURI(req.user.displayName))
+  #res.redirect('/setcookie.html?email=' + encodeURI(req.user.profileUrl) + '&name=' + encodeURI(req.user.displayName))
+  res.redirect('/')
 )
 
 
