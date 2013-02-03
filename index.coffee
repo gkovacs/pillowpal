@@ -11,6 +11,18 @@ now.ready () ->
   $('#username').text(email)
   now.getStatus email, (status) ->
     $('#status').text(status)
+  root.friendlist = []
+  FB.api('/me/friends', (response) ->
+    for friend in response.data
+      console.log friend
+      root.friendlist.push friend.name
+    $('#friendlist').autocomplete(
+      {
+        'autoFocus': true,
+        'source': root.friendlist,
+      }
+    )
+  )
   
 now.refreshStatus = (targetuser, newstatus) ->
   if root.email == targetuser
