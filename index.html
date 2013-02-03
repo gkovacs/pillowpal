@@ -8,43 +8,185 @@
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
      <script src="//connect.facebook.net/en_US/all.js"></script>
+
+      <script src="js/modernizr.custom.37797.js"></script> 
+
+    <script src="js/parallax.js"></script>
+
     <script type="text/javascript">
         function playSound() {
             var snd = new Audio("005.wav"); // buffers automatically when created
             snd.play();
         }
     </script>  
+    <style type="text/css">
+        body{
+          /*
+            background: url(img/pillow.jpg) no-repeat center center fixed; 
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;*/
+            background:rgb(231, 240, 255);
+            margin:0;
+            padding:0;
+
+        }
+        #container{
+          /*
+          width:100%;
+          height:100%;
+          background:black;
+          opacity:0.3;
+          margin:0;
+          padding:0;*/
+        }
+        #content{
+          width:100%;
+          height:100%;
+          display:-webkit-box;
+          -webkit-box-orient:horizontal;
+          -webkit-box-pack:center;
+          -webkit-box-align:center;
+        }
+        .opts{
+          background: rgb(208, 242, 255);
+
+          padding:20px;
+          margin:20px;
+          border-radius:10px;
+
+        }
+        .opts:hover{
+          background: yellow;
+
+        }
+
+        /* midground (clouds) */
+#parallax-bg2 {
+  z-index: 2;
+  position: fixed;
+  left: 50%; /* align left edge with center of viewport */
+  top: 0;
+  width: 1200px;
+  margin-left: -600px; /* move left by half element's width */
+  opacity:0.2;
+  }
+  #bg2-1 {
+    position: absolute;
+    top: 162px;
+    left: 200px;
+    }
+  #bg2-2 {
+    position: absolute;
+    top: 300px;
+    left: 1150px;
+    }
+  #bg2-3 {
+    position: absolute;
+    top: 543px;
+    left: -35px;
+    }
+  #bg2-4 {
+    position: absolute;
+    top: 1180px;
+    left: 250px;
+    }
+  #bg2-5 {
+    position: absolute;
+    top: 900px;
+    left: 890px;
+    }
+/* background (clouds) */
+#parallax-bg1 {
+  z-index: 1;
+  position: fixed;
+  left: 50%; /* align left edge with center of viewport */
+  top: 0;
+  width: 1200px;
+  margin-left: -600px; /* move left by half element's width */
+  opacity:.2;
+  }
+  #bg1-1 {
+    position: absolute;
+    top: 85px;
+    left: -270px;
+    }
+  #bg1-2 {
+    position: absolute;
+    top: 440px;
+    left: 795px;
+    }
+  #bg1-3 {
+    position: absolute;
+    top: 900px;
+    left: -220px;
+    }
+
+    </style>  
       
 </head>
 
-<div id="fb-root"></div>
+<body>
+  <div id="fb-root"></div>
 
-<script>
-  FB.init({
-      appId      : {{= app_id }}, // App ID from the App Dashboard
-      channelUrl : 'http://psetparty.xvm.mit.edu:5678/channel.html', // Channel File for x-domain communication
-      status     : true, // check the login status upon init?
-      cookie     : true, // set sessions cookies to allow your server to access the session?
-      xfbml      : true  // parse XFBML tags on this page?
-    });
-  FB.login(function(response) {
-   if (response.authResponse) {
-     console.log('Welcome!  Fetching your information.... ');
-     FB.api('/me', function(response) {
-       console.log('Good to see you, ' + response.name + '.');
-     });
-   } else {
-     console.log('User cancelled login or did not fully authorize.');
-   }
- });
-</script>
+  <script>
+    FB.init({
+        appId      : {{= app_id }}, // App ID from the App Dashboard
+        channelUrl : 'http://psetparty.xvm.mit.edu:5678/channel.html', // Channel File for x-domain communication
+        status     : true, // check the login status upon init?
+        cookie     : true, // set sessions cookies to allow your server to access the session?
+        xfbml      : true  // parse XFBML tags on this page?
+      });
+    FB.login(function(response) {
+     if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+       });
+     } else {
+       console.log('User cancelled login or did not fully authorize.');
+     }
+   });
+  </script>
+<div id="container">
+  <div id="content">
+    <!-- You are: <span id="username"></span> -->
+    <div class="opts">
+      <a href="invitetopillow">Invite your friends to your pillow</a>
+    </div>
+    <div class="opts">
+      <a href="accesspillow">Access your friends' pillows</a>
+    </div>
+  </div>
 
+      <!-- <div id="parallax-bg3">
+        <img id="bg3-1" src="img/prabhav.png" width="338" height="397" alt="Hi!"/>
+        <img id="bg3-2" src="img/groggy.png" width="493" height="414" alt="Experience"/>
+        <img id="bg3-3" src="img/ohno.png" width="475" height="420" alt="Experience"/>
+      </div> -->
 
-You are: <span id="username"></span>
-<br/>
-<a href="invitetopillow">Invite your friends to your pillow</a>
-<br/>
-<a href="accesspillow">Access your friends' pillows</a>
+      
+      
+      <div id="parallax-bg2">
+        <img class = "bg-img" id="bg2-1" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-2" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-3" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-4" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-5" src="img/sphere2.png" alt="cloud"/>
+      </div>
+      
+      
+      <div id="parallax-bg1">
+        <img class = "bg-img-1" id="bg1-1" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-2" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-3" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-4" src="img/circle.png" alt="cloud"/>
+      </div>
+
+</div>
+</body>
+
 
 <!--
 <br/><br/>
