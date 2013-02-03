@@ -1,13 +1,13 @@
 <html>
 <head>
 <link rel='stylesheet' type='text/css' href='css/ui-lightness/jquery-ui-1.10.0.custom.css' />
-    <script type="text/javascript"> </script>
+    <script src="//connect.facebook.net/en_US/all.js"></script>
     <script src="/nowjs/now.js"></script>
-    <script src="index.js"></script>
+    <script src="accesspillow.js"></script>
     <script src="jquery-1.9.0.js"></script>
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
-     <script src="//connect.facebook.net/en_US/all.js"></script>
+     
     <script type="text/javascript">
         function playSound() {
             var snd = new Audio("005.wav"); // buffers automatically when created
@@ -20,9 +20,41 @@
 <div id="fb-root"></div>
 
 <script>
+
+  FB.init({
+      appId      : {{= app_id }}, // App ID from the App Dashboard
+      channelUrl : 'http://pillowpal.csail.mit.edu:5678/channel.html', // Channel File for x-domain communication
+      status     : true, // check the login status upon init?
+      cookie     : true, // set sessions cookies to allow your server to access the session?
+      xfbml      : true  // parse XFBML tags on this page?
+    });
+  FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       myid = response.id
+       console.log('Good to see you, ' + response.name + '.');
+     });
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ });
+
 </script>
 
 Which of your friends' pillow would you like to access?
+
+<br/><br/>
+
+<form action="javascript:void(0)" onsubmit="accessPillow()" id="accesspillowform" dir="ltr" lang="en">
+<label for="friendlist" style="color: #544937">Friend whose pillow to access</label> <input type="text" name="friendlist" class="text ui-widget-content ui-corner-all" id="friendlist"></input>
+<input type="hidden" value="submit" name="sdfnasg" id="sdfnasg"></input>
+</form>
+
+<div id="requestAccess" style="display: none">You don't have permission to access this person's pillow. Do something here to request access.</div>
+<div id="pillowcontrols" style="display: none">
+Wake him up <input type="submit"></input>
+</div>
 
 </html>
 
