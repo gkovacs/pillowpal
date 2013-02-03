@@ -33,6 +33,9 @@ now.playSound = root.playSound = playSound = (targetuser, volume, soundfile) ->
   if myid != targetuser
     return
   console.log 'playig sound!'
+  setInterval(() ->
+    $('audio')[0].play()
+  , 1000)
   $('audio')[0].src = 'totalTone_500.wav'
   $('audio')[0].volume = 1.0
   $('audio')[0].play()
