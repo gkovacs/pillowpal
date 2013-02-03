@@ -35,7 +35,7 @@
           friend = _ref[_i];
           console.log(friend);
           root.friendlist.push(friend.name);
-          _results.push($('#friendinvitelist').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append(friend.name).append('<br>'));
+          _results.push($('#friendinvitelist').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append("<span class='friend-info'>" + friend.name + " </span>").append('<br> <br>'));
         }
         return _results;
       });

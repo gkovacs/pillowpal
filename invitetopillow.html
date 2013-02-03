@@ -8,6 +8,7 @@
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
      <script src="//connect.facebook.net/en_US/all.js"></script>
+     <link rel="stylesheet" type="text/css" href="css/landing.css">
     <script type="text/javascript">
         function playSound() {
             var snd = new Audio("005.wav"); // buffers automatically when created
@@ -16,11 +17,20 @@
     </script>  
 
     <style type="text/css">
+
+    body{
+      background: url(images/classylvg.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      font-family: Helvetica;
+    }
     #container{
-      width:700px;
+      width:900px;
       margin: 0 auto;
       box-shadow: 0 0 10px 2px #888;
-      background:rgb(234, 243, 255);
+      background:rgba(215, 226, 255, 0.79)
     }
 
     #invite{
@@ -30,9 +40,22 @@
     }
 
     #friendinvitelist{
-      width:200px;
+      width:800px;
       margin: 0 auto;
+      -webkit-column-count:3;
 
+    }
+   
+    h3{font-family:'Lato',sans-serif !important;color:#000;font-weight:100;font-size:20px !important;text-shadow:0px 0px 2px rgba(0, 0, 0, 0.8);line-height:25px !important;text-align:center;}
+
+    input {
+      margin-top:0;
+      margin-right:5px;
+    }
+
+    #sbmitbtn{
+      width:160px;
+      margin: 0 auto;
     }
     </style>
       
@@ -61,17 +84,20 @@
  });
 </script>
 
+<h2>Pillow Pal</h2>
   <div id="container">
     <div id="invite">
-      Invite your friends to your pillow
+      <h3>Invite your friends to your pillow </h3>
     </div>
-    Welcome <span id="username"></span>
-    <br/>
+    
+    <!--Welcome <span id="username"></span>-->
+    
 
     <div id="friendinvitelist">
     </div>
-
-    <input type="submit" onclick="friendsInvited()">Invite friends</input>
+    <div id="sbmitbtn">
+      <input type="submit" onclick="friendsInvited()" value="Invite friends!"></input>
+    </div>
   </div>
 
 </body>
