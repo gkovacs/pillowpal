@@ -41,11 +41,15 @@
       margin-right:5px;
       width:300px;
     }
-    #input-friend{
+    .input-friend{
         width:250px;
         margin: 0 auto;
     }
-
+	
+	#pillowcontrols{
+		width:300px;
+		margin: 0 auto;
+	}
     
     </style>
 </head>
@@ -77,25 +81,46 @@
 
 <h2 style="padding-top:20px">Pillow Pal</h2>
   <div id="container">
-    <div id="invite">
+    <div class="invite">
       <h3>Which of your friends' pillow would you like to access?</h3>
     </div>
     
     <div id ="perms">
         <form action="javascript:void(0)" onsubmit="accessPillow()" id="accesspillowform" dir="ltr" lang="en">
-        <div id="input-friend">
+        <div class="input-friend">
             <input type="text" placeholder="Search your Facebook friends..." name="friendlist" class="text ui-widget-content ui-corner-all" id="friendlist"></input>
         </div>
         <input type="hidden" value="submit" name="sdfnasg" id="sdfnasg"></input>
         </form>
 
         <div id="requestAccess" style="display: none">You don't have permission to access this person's pillow. Do something here to request access.</div>
+        
+    
         <div id="pillowcontrols" style="display: none">
+        
+        <div class="invite">
+      		<h3>What song would you like?</h3>
+    		</div>
+    		
+		      <div class="input-friend">
+		          <input id="wakeupsong" type="text" value="call me maybe" /> 
+		      </div>
+		      
+		      <div class="invite">
+      		<h3>How loud?</h3>
+    		</div>
+    		
+		      <div class="input-friend">
+		          <input id="volumeSlider" min="1" max="100" value="30" type="range"/>
+		      </div>
+		      
+		       <div class="input-friend">
+         <input type="submit" onclick="sendWakeup()" id="sendWakeupButton"></input>
+					</div>
+        </div>
 
-            Wake up song: <input id="wakeupsong" type="text" value="call me maybe" /> <br/>
-            Volume: <input id="volumeSlider" min="1" max="100" value="30" type="range"/>
-            <input type="submit" onclick="sendWakeup()" id="sendWakeupButton"></input>
-
+           
+           
         </div>
     </div>
 
