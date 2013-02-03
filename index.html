@@ -31,6 +31,7 @@
    if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
+       myid = response.id
        console.log('Good to see you, ' + response.name + '.');
      });
    } else {
@@ -45,6 +46,8 @@ You are: <span id="username"></span>
 <a href="invitetopillow">Invite your friends to your pillow</a>
 <br/>
 <a href="accesspillow">Access your friends' pillows</a>
+
+<audio></audio>
 
 <!--
 <br/><br/>

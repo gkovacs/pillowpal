@@ -147,6 +147,11 @@ app.get '/allowedfriends', (req, res) ->
   userid = req.query.userid
   res.end JSON.stringify(allowedFriends[userid])
 
+app.get '/playsound', (req, res) ->
+  userid = req.query.userid
+  soundfile = req.query.soundfile
+  everyone.now.playSound(userid, soundfile)
+
 #app.get '/', (req, res) ->
 #  if req.query? and req.query.email? and req.query.name?
 #    res.redirect('/setcookie.html?email=' + encodeURI(req.query.email) + '&name=' + encodeURI(req.query.name))
