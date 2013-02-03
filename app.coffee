@@ -56,8 +56,8 @@ ejs = require 'ejs'
 ejs.open = '{{'
 ejs.close = '}}'
 
-redis = require 'redis'
-rclient = redis.createClient()
+#redis = require 'redis'
+#rclient = redis.createClient()
 
 app.configure('development', () ->
   app.use(express.errorHandler())

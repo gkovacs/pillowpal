@@ -7,7 +7,17 @@ now.ready () ->
       return
     userid = loginStatus.authResponse.userID
     console.log 'nowjs initialized'
-    $('#username').text(userid)
+    
+    
+    
+    FB.api('/me', (response) ->
+      if not response? or not response.name?
+        window.location = '/auth/facebook'
+      $('#username').text(response.name)
+    )
+    
+
+    
     now.getStatus(userid, (status) ->
       $('#status').text(status)
     )
