@@ -130,35 +130,26 @@
 <body>
   <div id="fb-root"></div>
 
-  <script>
-    FB.init({
-        appId      : {{= app_id }}, // App ID from the App Dashboard
-        channelUrl : 'http://psetparty.xvm.mit.edu:5678/channel.html', // Channel File for x-domain communication
-        status     : true, // check the login status upon init?
-        cookie     : true, // set sessions cookies to allow your server to access the session?
-        xfbml      : true  // parse XFBML tags on this page?
-      });
-    FB.login(function(response) {
-     if (response.authResponse) {
-       console.log('Welcome!  Fetching your information.... ');
-       FB.api('/me', function(response) {
-         console.log('Good to see you, ' + response.name + '.');
-       });
-     } else {
-       console.log('User cancelled login or did not fully authorize.');
-     }
-   });
-  </script>
-<div id="container">
-  <div id="content">
-    <!-- You are: <span id="username"></span> -->
-    <div class="opts">
-      <a href="invitetopillow">Invite your friends to your pillow</a>
-    </div>
-    <div class="opts">
-      <a href="accesspillow">Access your friends' pillows</a>
-    </div>
-  </div>
+<script>
+  FB.init({
+      appId      : {{= app_id }}, // App ID from the App Dashboard
+      channelUrl : 'http://psetparty.xvm.mit.edu:5678/channel.html', // Channel File for x-domain communication
+      status     : true, // check the login status upon init?
+      cookie     : true, // set sessions cookies to allow your server to access the session?
+      xfbml      : true  // parse XFBML tags on this page?
+    });
+  FB.login(function(response) {
+   if (response.authResponse) {
+     console.log('Welcome!  Fetching your information.... ');
+     FB.api('/me', function(response) {
+       myid = response.id
+       console.log('Good to see you, ' + response.name + '.');
+     });
+   } else {
+     console.log('User cancelled login or did not fully authorize.');
+   }
+ });
+</script>
 
       <!-- <div id="parallax-bg3">
         <img id="bg3-1" src="img/prabhav.png" width="338" height="397" alt="Hi!"/>
@@ -184,9 +175,7 @@
         <img class = "bg-img-1" id="bg1-4" src="img/circle.png" alt="cloud"/>
       </div>
 
-</div>
-</body>
-
+<audio></audio>
 
 <!--
 <br/><br/>

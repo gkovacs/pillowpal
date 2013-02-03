@@ -3,7 +3,7 @@
 <link rel='stylesheet' type='text/css' href='css/ui-lightness/jquery-ui-1.10.0.custom.css' />
     <script type="text/javascript"> </script>
     <script src="/nowjs/now.js"></script>
-    <script src="index.js"></script>
+    <script src="invitetopillow.js"></script>
     <script src="jquery-1.9.0.js"></script>
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
@@ -31,6 +31,7 @@
    if (response.authResponse) {
      console.log('Welcome!  Fetching your information.... ');
      FB.api('/me', function(response) {
+       myid = response.id
        console.log('Good to see you, ' + response.name + '.');
      });
    } else {
@@ -44,9 +45,10 @@ Invite your friends to your pillow
 You are: <span id="username"></span>
 <br/>
 
-<input type="checkbox">friend1</input>
-<br/>
-<input type="checkbox">friend2</input>
+<div id="friendinvitelist">
+</div>
+
+<input type="submit" onclick="friendsInvited()">Invite friends</input>
 
 <!--
 <br/><br/>

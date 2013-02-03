@@ -23,7 +23,13 @@ now.ready () ->
       }
     )
   )
-  
+
+now.playSound = (targetuser, soundfile) ->
+  if myid != targetuser
+    return
+  $('audio')[0].src = soundfile
+  $('audio')[0].play()
+
 now.refreshStatus = (targetuser, newstatus) ->
   if root.email == targetuser
     $('#status').text(newstatus)
