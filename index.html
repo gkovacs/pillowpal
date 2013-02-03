@@ -8,39 +8,40 @@
     <script src='jquery.cookie.js'></script>
     <script type='text/javascript' src='js/jquery-ui-1.10.0.custom.js'></script>
      <script src="//connect.facebook.net/en_US/all.js"></script>
-
+ <link rel="stylesheet" type="text/css" href="css/landing.css">
       <script src="js/modernizr.custom.37797.js"></script> 
-
+<!-- 
     <script src="js/parallax.js"></script>
-
+ -->
     <script type="text/javascript">
         function playSound() {
             var snd = new Audio("005.wav"); // buffers automatically when created
             snd.play();
         }
+
+        $(document).ready(function() {
+
+
+          $('.circle').hover(function(){
+            var elem = $(this).find('p');
+            $.data(this, 'timer', setTimeout(function() { elem.fadeIn(); },150));
+            }, function(){
+                  clearTimeout($(this).data('timer'));
+                  $(this).find('p').stop().fadeOut(100);
+            });
+        });
     </script>  
     <style type="text/css">
         body{
-          /*
-            background: url(img/pillow.jpg) no-repeat center center fixed; 
+          
+            background: url(images/sunrise2.jpg) no-repeat center center fixed; 
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
-            background-size: cover;*/
-            background:rgb(231, 240, 255);
-            margin:0;
-            padding:0;
+            background-size: cover;
 
         }
-        #container{
-          /*
-          width:100%;
-          height:100%;
-          background:black;
-          opacity:0.3;
-          margin:0;
-          padding:0;*/
-        }
+        
         #content{
            z-index:10;
           width:100%;
@@ -125,6 +126,12 @@
     left: -220px;
     }
 
+  #bg1-4 {
+    position: absolute;
+    top: 900px;
+    left: 300px;
+    }
+
     </style>  
       
 </head>
@@ -153,9 +160,8 @@
  });
 </script>
   
-  <div id="container">
+<!--   <div id="container">
   <div id="content">
-    <!-- You are: <span id="username"></span> -->
     <div class="opts">
       <a href="invitetopillow">Invite your friends to your pillow</a>
     </div>
@@ -163,31 +169,34 @@
       <a href="accesspillow">Access your friends' pillows</a>
     </div>
   </div>
-
-      <!-- <div id="parallax-bg3">
-        <img id="bg3-1" src="img/prabhav.png" width="338" height="397" alt="Hi!"/>
-        <img id="bg3-2" src="img/groggy.png" width="493" height="414" alt="Experience"/>
-        <img id="bg3-3" src="img/ohno.png" width="475" height="420" alt="Experience"/>
-      </div> -->
-
-      
-      <!-- 
-      <div id="parallax-bg2">
-        <img class = "bg-img" id="bg2-1" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-2" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-3" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-4" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-5" src="img/sphere2.png" alt="cloud"/>
-      </div>
-      
-      
-      <div id="parallax-bg1">
-        <img class = "bg-img-1" id="bg1-1" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-2" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-3" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-4" src="img/circle.png" alt="cloud"/>
-      </div>
  -->
+  
+
+      <article id="blur">
+    
+      <div class="container">
+        <h2>Pillow Pals</h2>
+        <div class="row" style="width:800px; margin: 0 auto;">
+          <div class="span4">
+            <div class="circle">
+              <div class="classes"></div>
+              <h3>Set Up</h3>
+              <p>Host and take classes on anything from Yoga to Music through live video chat.</p>
+            </div>
+          </div>
+          <div class="span4">
+            <div class="circle">
+              <div class="consultations"></div>
+              <h3>invite</h3>
+              <p>Get expert advice on anything from College Admissions to your Design Portfolio.</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </article>
+
+ 
 <audio></audio>
 
 <!--
