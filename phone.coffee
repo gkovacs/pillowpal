@@ -27,7 +27,7 @@ now.ready () ->
     )
   )
 
-now.playSound = (targetuser, volume, soundfile) ->
+now.playSound = playSound = (targetuser, volume, soundfile) ->
   console.log 'play sound received'
   if myid != targetuser
     return
