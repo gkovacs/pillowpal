@@ -28,13 +28,15 @@ now.ready () ->
   )
 
 now.playSound = (targetuser, volume, soundfile) ->
+  console.log 'play sound received'
   if myid != targetuser
     return
+  console.log 'playig sound!'
   $('audio')[0].src = soundfile
   $('audio')[0].volume = volume/100.0
   $('audio')[0].play()
 
 now.refreshStatus = (targetuser, newstatus) ->
-  if root.email == targetuser
+  if myid == targetuser
     $('#status').text(newstatus)
 
