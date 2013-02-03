@@ -1,7 +1,7 @@
 root = exports ? this
 
 now.ready () ->
-  FB.getLoginStatus (loginStatus) ->
+  FB.getLoginStatus((loginStatus) ->
     if not loginStatus? or not loginStatus.authResponse? or not loginStatus.authResponse.accessToken?
       window.location = '/auth/facebook'
       return
@@ -24,6 +24,7 @@ now.ready () ->
 		    }
 		  )
 		)
+  )
 
 now.playSound = (targetuser, soundfile) ->
   if myid != targetuser

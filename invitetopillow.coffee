@@ -1,7 +1,7 @@
 root = exports ? this
 
 now.ready () ->
-  FB.getLoginStatus (loginStatus) ->
+  FB.getLoginStatus((loginStatus) ->
     if not loginStatus? or not loginStatus.authResponse? or not loginStatus.authResponse.accessToken?
       window.location = '/auth/facebook'
       return
@@ -20,6 +20,7 @@ now.ready () ->
 		    root.friendlist.push friend.name
 		    $('#friendinvitelist').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append(friend.name).append('<br>')
 		)
+  )
 
 friendsInvited = root.friendsInvited = () ->
   allowedFriendIds = []
