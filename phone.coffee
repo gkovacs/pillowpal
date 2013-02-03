@@ -28,6 +28,7 @@ now.ready () ->
   )
 
 now.playSound = root.playSound = playSound = (targetuser, volume, soundfile) ->
+  setbackground()
   console.log 'play sound received'
   if myid != targetuser
     return
