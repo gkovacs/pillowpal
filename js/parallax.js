@@ -4,7 +4,8 @@ $(document).ready(function() {
     $(window).bind('scroll',function(e){
     	parallaxScroll();
     });
-    
+})
+
 /* Scroll the background layers */
 function parallaxScroll(){
 	var scrolled = $(window).scrollTop();
