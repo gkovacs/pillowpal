@@ -14,9 +14,30 @@
             snd.play();
         }
     </script>  
+
+    <style type="text/css">
+    #container{
+      width:700px;
+      margin: 0 auto;
+      box-shadow: 0 0 10px 2px #888;
+      background:rgb(234, 243, 255);
+    }
+
+    #invite{
+      font-family: Helvetica;
+      font-size:20px;
+      padding:20px;
+    }
+
+    #friendinvitelist{
+      width:200px;
+      margin: 0 auto;
+
+    }
+    </style>
       
 </head>
-
+<body>
 <div id="fb-root"></div>
 
 <script>
@@ -40,16 +61,20 @@
  });
 </script>
 
-Invite your friends to your pillow
-<br/>
-You are: <span id="username"></span>
-<br/>
+  <div id="container">
+    <div id="invite">
+      Invite your friends to your pillow
+    </div>
+    Welcome <span id="username"></span>
+    <br/>
 
-<div id="friendinvitelist">
-</div>
+    <div id="friendinvitelist">
+    </div>
 
-<input type="submit" onclick="friendsInvited()">Invite friends</input>
+    <input type="submit" onclick="friendsInvited()">Invite friends</input>
+  </div>
 
+</body>
 <!--
 <br/><br/>
 
