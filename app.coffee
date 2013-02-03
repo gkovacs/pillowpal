@@ -134,6 +134,19 @@ everyone.now.setStatus = (username, newstatus, callback) ->
     callback newstatus
   everyone.now.refreshStatus(username, newstatus)
 
+allowedFriends = {}
+#friendIdToName = {}
+
+everyone.now.setFriendsAllowed = (userid, allowedFriendList) ->
+  allowedFriends[userid] = allowedFriendList
+
+everyone.now.getFriendsAllowed = (userid, callback) ->
+  callback(allowedFriends[userid])
+
+app.get '/allowedfriends', (req, res) ->
+  userid = req.query.userid
+  res.end JSON.stringify(allowedFriends[userid])
+
 #app.get '/', (req, res) ->
 #  if req.query? and req.query.email? and req.query.name?
 #    res.redirect('/setcookie.html?email=' + encodeURI(req.query.email) + '&name=' + encodeURI(req.query.name))

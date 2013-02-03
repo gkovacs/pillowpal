@@ -13,17 +13,23 @@ now.ready () ->
     $('#status').text(status)
   root.friendlist = []
   FB.api('/me/friends', (response) ->
+    $('#friendinvitelist').html('')
     for friend in response.data
       console.log friend
       root.friendlist.push friend.name
-    $('#friendlist').autocomplete(
-      {
-        'autoFocus': true,
-        'source': root.friendlist,
-      }
-    )
+      $('#friendinvitelist').append($('<input>').addClass('invitableFriend').attr('friendname', friend.name).attr('friendid', friend.id).attr('type', 'checkbox')).append(friend.name).append('<br>')
   )
-  
+
+friendsInvited = root.friendsInvited = () ->
+  allowedFriendIds = []
+  for friend in $('.invitableFriend')
+    friendname = $(friend).attr('friendname')
+    friendid = $(friend).attr('friendid')
+    if $(friend).is(':checked')
+      allowedFriendIds.push friendid
+  console.log 'invited friends'
+  now.setFriendsAllowed(myid, allowedFriendIds) # myid is initialized in the js in invitetopillow.coffee
+
 now.refreshStatus = (targetuser, newstatus) ->
   if root.email == targetuser
     $('#status').text(newstatus)
