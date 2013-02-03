@@ -42,7 +42,6 @@
           padding:0;*/
         }
         #content{
-           z-index:10;
           width:100%;
           height:100%;
           display:-webkit-box;
@@ -51,7 +50,6 @@
           -webkit-box-align:center;
         }
         .opts{
-          z-index:10;
           background: rgb(208, 242, 255);
 
           padding:20px;
@@ -129,8 +127,69 @@
       
 </head>
 
+<<<<<<< HEAD
 <body>
   <div id="fb-root"></div>
+
+  <script>
+    FB.init({
+        appId      : {{= app_id }}, // App ID from the App Dashboard
+        channelUrl : 'http://psetparty.xvm.mit.edu:5678/channel.html', // Channel File for x-domain communication
+        status     : true, // check the login status upon init?
+        cookie     : true, // set sessions cookies to allow your server to access the session?
+        xfbml      : true  // parse XFBML tags on this page?
+      });
+    FB.login(function(response) {
+     if (response.authResponse) {
+       console.log('Welcome!  Fetching your information.... ');
+       FB.api('/me', function(response) {
+         console.log('Good to see you, ' + response.name + '.');
+       });
+     } else {
+       console.log('User cancelled login or did not fully authorize.');
+     }
+   });
+  </script>
+<div id="container">
+  <div id="content">
+    <!-- You are: <span id="username"></span> -->
+    <div class="opts">
+      <a href="invitetopillow">Invite your friends to your pillow</a>
+    </div>
+    <div class="opts">
+      <a href="accesspillow">Access your friends' pillows</a>
+    </div>
+  </div>
+
+      <!-- <div id="parallax-bg3">
+        <img id="bg3-1" src="img/prabhav.png" width="338" height="397" alt="Hi!"/>
+        <img id="bg3-2" src="img/groggy.png" width="493" height="414" alt="Experience"/>
+        <img id="bg3-3" src="img/ohno.png" width="475" height="420" alt="Experience"/>
+      </div> -->
+
+      
+      
+      <div id="parallax-bg2">
+        <img class = "bg-img" id="bg2-1" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-2" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-3" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-4" src="img/sphere2.png" alt="cloud"/>
+        <img class = "bg-img" id="bg2-5" src="img/sphere2.png" alt="cloud"/>
+      </div>
+      
+      
+      <div id="parallax-bg1">
+        <img class = "bg-img-1" id="bg1-1" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-2" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-3" src="img/circle.png" alt="cloud"/>
+        <img class = "bg-img-1" id="bg1-4" src="img/circle.png" alt="cloud"/>
+      </div>
+
+</div>
+</body>
+
+=======
+<div id="fb-root"></div>
 
 <script>
   FB.init({
@@ -152,42 +211,15 @@
    }
  });
 </script>
-  
-  <div id="container">
-  <div id="content">
-    <!-- You are: <span id="username"></span> -->
-    <div class="opts">
-      <a href="invitetopillow">Invite your friends to your pillow</a>
-    </div>
-    <div class="opts">
-      <a href="accesspillow">Access your friends' pillows</a>
-    </div>
-  </div>
 
-      <!-- <div id="parallax-bg3">
-        <img id="bg3-1" src="img/prabhav.png" width="338" height="397" alt="Hi!"/>
-        <img id="bg3-2" src="img/groggy.png" width="493" height="414" alt="Experience"/>
-        <img id="bg3-3" src="img/ohno.png" width="475" height="420" alt="Experience"/>
-      </div> -->
 
-      
-      <!-- 
-      <div id="parallax-bg2">
-        <img class = "bg-img" id="bg2-1" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-2" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-3" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-4" src="img/sphere2.png" alt="cloud"/>
-        <img class = "bg-img" id="bg2-5" src="img/sphere2.png" alt="cloud"/>
-      </div>
-      
-      
-      <div id="parallax-bg1">
-        <img class = "bg-img-1" id="bg1-1" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-2" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-3" src="img/circle.png" alt="cloud"/>
-        <img class = "bg-img-1" id="bg1-4" src="img/circle.png" alt="cloud"/>
-      </div>
- -->
+You are: <span id="username"></span>
+<br/>
+<a href="invitetopillow">Invite your friends to your pillow</a>
+<br/>
+<a href="accesspillow">Access your friends' pillows</a>
+>>>>>>> ebeddced24bc8b0ff1b874f751c68e3eaea9f113
+
 <audio></audio>
 
 <!--
