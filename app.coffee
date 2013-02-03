@@ -153,7 +153,14 @@ app.get '/allowedfriends', (req, res) ->
 
 lyrics_getter = require './lyrics_getter'
 
+everyone.now.sendChangeVolume = sendChangeVolume = (targetuser, volume) ->
+  everyone.now.setVolume(targetuser, volume)
+
 everyone.now.sendPlaySound = sendPlaySound = (targetuser, volume, soundfile) ->
+  console.log 'sendPlaySound sent!'
+  console.log targetuser
+  console.log volume
+  console.log soundfile
   if soundfile.indexOf('.wav') != -1 and soundfile.indexOf('.mp3') != -1
     everyone.now.playSound(targetuser, volume, soundfile)
   else

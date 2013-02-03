@@ -18,16 +18,19 @@ now.ready () ->
       for friend in response.data
         console.log friend
         root.friendlist.push {'label': friend.name, 'value': friend.id}
+      root.friendlist.push {'label': 'Myself', 'value': myid}
       $('#friendlist').autocomplete(
         {
           'autoFocus': true,
           'source': root.friendlist,
           'select': (event, ui) ->
-            $('#friendlist').val(ui.item.value)
-            $('#friendlist').submit()
-            setTimeout(() ->
-              $('#friendlist').val('')
-            , 10)
+            accessPillow(ui.item.value)
+            console.log 'selected: ' + ui.item.value
+            #$('#friendlist').val(ui.item.value)
+            #$('#friendlist').submit()
+            #setTimeout(() ->
+            #  $('#friendlist').val('')
+            #, 10)
         }
       )
     )
@@ -43,10 +46,14 @@ sendWakeup = root.sendWakeup = () ->
   if targetid == -1
     return
   volume = $('#volumeSlider').val()
-  now.sendPlaySound(targetid, volume, '005.wav')
+  console.log 'sendWakeup sent!'
+  console.log targetid
+  console.log $('#wakeupsong').val()
+  now.sendPlaySound(targetid, volume, $('#wakeupsong').val())
 
-accessPillow = root.accessPillow = () ->
-  friendid = $('#friendlist').val()
+accessPillow = root.accessPillow = (friendid) ->
+  if not friendid?
+    friendid = $('#friendlist').val()
   targetid = friendid
   setTimeout(() ->
     $('#friendlist').val('')
