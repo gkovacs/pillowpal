@@ -52,6 +52,10 @@ passport.use(new FacebookStrategy({
 ))
 
 
+ejs = require 'ejs'
+ejs.open = '{{'
+ejs.close = '}}'
+
 redis = require 'redis'
 rclient = redis.createClient()
 
@@ -60,8 +64,9 @@ app.configure('development', () ->
 )
 
 app.configure( ->
-  app.set('views', __dirname + '/views')
+  app.set('views', __dirname + '/')
   app.set('view engine', 'ejs')
+  app.engine('html', ejs.renderFile);
   app.use(express.bodyParser())
   app.use(express.methodOverride())
   app.set('view options', { layout: false })
@@ -81,6 +86,8 @@ app.configure( ->
   app.use(express.static(__dirname + '/'))
 )
 
+app.get '/', (req, res) ->
+  res.render('index.html', {'app_id': FACEBOOK_APP_ID})
 
 
 # GET /auth/facebook
