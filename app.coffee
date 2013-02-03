@@ -151,6 +151,7 @@ app.get '/playsound', (req, res) ->
   userid = req.query.userid
   soundfile = req.query.soundfile
   everyone.now.playSound(userid, soundfile)
+  res.end 'send sound'
 
 #app.get '/', (req, res) ->
 #  if req.query? and req.query.email? and req.query.name?
