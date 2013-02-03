@@ -1,9 +1,18 @@
 <html>
-
-<script src="/nowjs/now.js"></script>
-<script src="index.js"></script>
-<script src="jquery-1.8.2.min.js"></script>
-<script src='jquery.cookie.js'></script>
+<head>
+    <script type="text/javascript"> </script>
+    <script src="/nowjs/now.js"></script>
+    <script src="index.js"></script>
+    <script src="jquery-1.8.2.min.js"></script>
+    <script src='jquery.cookie.js'></script>
+    <script type="text/javascript">
+        function playSound() {
+            var snd = new Audio("005.wav"); // buffers automatically when created
+            snd.play();
+        }
+    </script>  
+      
+</head>
 
 User: <span id="username"></span>
 
@@ -15,6 +24,14 @@ Status: <span id="status"></span>
 
 Wake up in <input id="numMinutes" type="text"></input> minutes <button click="wakeupclicked">Set Alarm</button>
 
+
+<div id="container">
+    <button onclick="playSound()"> Play </button>
+</div>
+
+
 </html>
+
+
 
 
