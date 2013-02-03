@@ -8,8 +8,9 @@ now.ready () ->
     userid = loginStatus.authResponse.userID
     console.log 'nowjs initialized'
     $('#username').text(userid)
-    now.getStatus email, (status) ->
+    now.getStatus(userid, (status) ->
       $('#status').text(status)
+    )
     root.friendlist = []
     FB.api('/me/friends', (response) ->
       if not response? or not response.data?
