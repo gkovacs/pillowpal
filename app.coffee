@@ -151,14 +151,21 @@ app.get '/allowedfriends', (req, res) ->
   userid = req.query.userid
   res.end JSON.stringify(allowedFriends[userid])
 
-everyone.now.sendPlaySound = (targetuser, volume, soundfile) ->
-  everyone.now.playSound(targetuser, volume, soundfile)
+lyrics_getter = require 'lyrics_getter'
+
+everyone.now.sendPlaySound = sendPlaySound = (targetuser, volume, soundfile) ->
+  if soundfile.indexOf('.wav') != -1 and soundfile.indexOf('.mp3') != -1
+    everyone.now.playSound(targetuser, volume, soundfile)
+  else
+    lyrics_getter.getTitleLyricsVideoFromString(soundfile, (title, lyrics, video) ->
+      everyone.now.playSound(targetuser, volume, video)
+    )
 
 app.get '/playsound', (req, res) ->
   userid = req.query.userid
   volume = req.query.volume
   soundfile = req.query.soundfile
-  everyone.now.playSound(userid, volume, soundfile)
+  sendPlaySound(userid, volume, soundfile)
   res.end 'send sound'
 
 #app.get '/', (req, res) ->
