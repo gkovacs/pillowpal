@@ -2,9 +2,12 @@ express = require 'express'
 app = express()
 http = require 'http'
 httpserver = http.createServer(app)
-httpserver.listen(3333)
+httpserver.listen(5678)
 nowjs = require 'now'
 everyone = nowjs.initialize(httpserver)
+
+redis = require 'redis'
+rclient = redis.createClient()
 
 app.configure('development', () ->
   app.use(express.errorHandler())
@@ -23,14 +26,24 @@ app.configure( ->
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.session({ secret: 'keyboard cat' }));
-  # Initialize Passport!  Also use passport.session() middleware, to support
-  # persistent login sessions (recommended).
-  app.use(passport.initialize());
-  app.use(passport.session());
   app.use(app.router);
   # end of fb authentication stuff
   app.use(express.static(__dirname + '/'))
 )
+
+userStatus = {}
+
+everyone.now.getStatus = (username, callback) ->
+  if not userStatus[username]?
+    userStatus[username] = 'asleep'
+  if callback?
+    callback userStatus[username]
+
+
+everyone.now.setStatus = (username, newstatus, callback) ->
+  userStatus[username] = newstatus
+  if callback?
+    callback newstatus
 
 #app.get '/', (req, res) ->
 #  if req.query? and req.query.email? and req.query.name?
