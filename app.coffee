@@ -96,6 +96,9 @@ app.get '/', (req, res) ->
   res.render('index.html', {'app_id': FACEBOOK_APP_ID})
 
 
+app.get '/phone', (req, res) ->
+  res.render('phone.html', {'app_id': FACEBOOK_APP_ID})
+
 # GET /auth/facebook
 #   Use passport.authenticate() as route middleware to authenticate the
 #   request.  The first step in Facebook authentication will involve
