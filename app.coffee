@@ -166,6 +166,12 @@ everyone.now.sendPlaySound = sendPlaySound = (targetuser, volume, soundfile) ->
   console.log soundfile
   if soundfile.indexOf('.wav') != -1 and soundfile.indexOf('.mp3') != -1
     everyone.now.playSound(targetuser, volume, soundfile)
+  else if soundfile == 'eye of the tiger'
+    everyone.now.playSound(targetuser, volume, 'eyeofthetiger.mp3')
+  else if soundfile == 'gangnam style'
+    everyone.now.playSound(targetuser, volume, 'gangnam.mp3')
+  else if soundfile == 'call me maybe'
+    everyone.now.playSound(targetuser, volume, 'callmemaybe.mp3')
   else
     lyrics_getter.getTitleLyricsVideoFromString(soundfile, (title, lyrics, video) ->
       everyone.now.playSound(targetuser, volume, video)
