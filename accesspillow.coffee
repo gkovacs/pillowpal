@@ -37,15 +37,26 @@ now.refreshStatus = (targetuser, newstatus) ->
   if root.email == targetuser
     $('#status').text(newstatus)
 
+targetid = -1
+
+sendWakeup = root.sendWakeup = () ->
+  if targetid == -1
+    return
+  volume = $('#volumeSlider').val()
+  now.sendPlaySound(targetid, volume, '005.wav')
+
 accessPillow = root.accessPillow = () ->
   friendid = $('#friendlist').val()
+  targetid = friendid
   setTimeout(() ->
     $('#friendlist').val('')
   , 10)
   console.log friendid
   now.getFriendsAllowed(friendid, (allowedIds) ->
-    if not allowedIds? or allowedIds.indexOf(myid) == -1
+    if false # not allowedIds? or allowedIds.indexOf(myid) == -1
       $('#requestAccess').show()
+    else
+      $('#pillowcontrols').show()
   )
   return false
 

@@ -27,10 +27,11 @@ now.ready () ->
     )
   )
 
-now.playSound = (targetuser, soundfile) ->
+now.playSound = (targetuser, volume, soundfile) ->
   if myid != targetuser
     return
   $('audio')[0].src = soundfile
+  $('audio')[0].volume = volume/100.0
   $('audio')[0].play()
 
 now.refreshStatus = (targetuser, newstatus) ->

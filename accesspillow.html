@@ -53,7 +53,11 @@ Which of your friends' pillow would you like to access?
 
 <div id="requestAccess" style="display: none">You don't have permission to access this person's pillow. Do something here to request access.</div>
 <div id="pillowcontrols" style="display: none">
-Wake him up <input type="submit"></input>
+
+Wake up:<br/>
+Volume: <input id="volumeSlider" min="1" max="100" value="30" type="range"/>
+<input type="submit" onclick="sendWakeup()"></input>
+
 </div>
 
 </html>
