@@ -1,7 +1,7 @@
 root = exports ? this
 
 now.ready () ->
-  setbackground()
+  #setbackground()
   FB.getLoginStatus((loginStatus) ->
     if not loginStatus? or not loginStatus.authResponse? or not loginStatus.authResponse.accessToken?
       window.location = '/auth/facebook'
@@ -32,6 +32,7 @@ now.setVolume = (targetuser, volume) ->
   $('audio')[0].volume = volume/100.0
 
 now.playSound = playSound = root.playSound = (targetuser, volume, soundfile) ->
+  setbackground()
   console.log 'play sound received'
   if myid != targetuser
     return
