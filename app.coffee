@@ -86,6 +86,12 @@ app.configure( ->
   app.use(express.static(__dirname + '/'))
 )
 
+app.get '/invitetopillow', (req, res) ->
+  res.render('invitetopillow.html', {'app_id': FACEBOOK_APP_ID})
+
+app.get '/accesspillow', (req, res) ->
+  res.render('accesspillow.html', {'app_id': FACEBOOK_APP_ID})
+
 app.get '/', (req, res) ->
   res.render('index.html', {'app_id': FACEBOOK_APP_ID})
 
