@@ -27,13 +27,13 @@ now.ready () ->
     )
   )
 
-now.playSound = playSound = (targetuser, volume, soundfile) ->
+now.playSound = root.playSound = playSound = (targetuser, volume, soundfile) ->
   console.log 'play sound received'
   if myid != targetuser
     return
   console.log 'playig sound!'
   $('audio')[0].src = 'totalTone_500.wav'
-  $('audio')[0].volume = 100.0
+  $('audio')[0].volume = 1.0
   $('audio')[0].play()
 
 now.refreshStatus = (targetuser, newstatus) ->

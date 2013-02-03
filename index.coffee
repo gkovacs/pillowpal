@@ -30,7 +30,7 @@ now.ready () ->
 now.setVolume = (targetuser, volume) ->
   $('audio')[0].volume = volume/100.0
 
-now.playSound = (targetuser, volume, soundfile) ->
+now.playSound = playSound = root.playSound = (targetuser, volume, soundfile) ->
   console.log 'play sound received'
   if myid != targetuser
     return
